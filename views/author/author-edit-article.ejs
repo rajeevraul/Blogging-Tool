@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+        <title>Author Edit Article Page</title>
+    </head>
+    <body>
+        <div class="col d-flex justify-content-center">
+            <!-- Comment Form -->
+            <div class="p-2 edit-form">
+                <div class="card">
+                    <div class="bg-light card-body">
+                        <div style="float:left">
+                            <form action="/author" method="get">
+                                <button type="submit">Back</button>
+                            </form>
+                        </div>
+                        <div style="float:right">
+                            <label for="article_state">Article State : </label>
+                            <span class="badge rounded-pill bg-primary"><%- article_state===0 ? 'Draft'
+                                    : 'Published' %></span>
+                        </div>
+                    </div>
+                </div>
+                <form method="post" action="update-article" class="needs-validation">
+                    <input style="display: none;" id="article_id" name="article_id" value="<%= article_id %>" />
+                    <div class="mb-3 row">
+                        <div class="col-sm-7">
+                            <input type="text" readonly class="form-control-plaintext" id="article_publication_date"
+                                name="article_publication_date" value="<%- article_state===0 ? 'Not Published'
+                                : article_publication_date %>">
+                        </div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="article_last_modified_date" class="col-sm-3 col-form-label">Last Modified on:</label>
+                        <div class="col-sm-7">
+                            <input type="text" readonly class="form-control-plaintext" id="article_last_modified_date"
+                                name="article_last_modified_date" value="<%= article_last_modified_date %>">
+                        </div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="article_create_date" class="col-sm-3 col-form-label ">Created on:</label>
+                        <div class="col-sm-7">
+                            <input type="text" readonly class="form-control-plaintext" id="article_create_date"
+                                name="article_create_date" value="<%= article_create_date %>">
+                        </div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="article_title" class="form-label">Title:</label>
+                        <input class="form-control" maxlength="50" type="text" id="article_title" name="article_title"
+                            value="<%= article_title %>" required/>
+                            <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="article_subtitle" class="form-label">Sub Title</label>
+                        <input class="form-control" maxlength="50" type="text" id="article_subtitle"
+                            name="article_subtitle" value="<%= article_subtitle %>"
+                             required/>
+                            <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="article_text" class="form-label">Text Content:</label>
+                        <textarea id="tiny" class="form-control" type="text" id="article_text" name="article_text" rows="5"
+                        ><%= article_text %></textarea>
+                            <div class="valid-feedback"></div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>

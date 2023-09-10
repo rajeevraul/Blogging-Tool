@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+    <title><%=article.article_title%></title>
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <form action="/reader" method="get">
+                <button class="navbar-brand" type="submit">Back</button>
+            </form>
+            <form action="/author" method="get">
+                <button class="author-button">Login as Author</button>
+            </form>
+        </div>
+    </nav>
+     <!-- Page Header-->
+     <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div style="float:right">
+                <form method="post" action="add-likes">
+                    <input style="display: none;" id='article_id' name='article_id' value='<%= article.article_id %>' />
+                    <button type="submit" class="btn btn-outline-danger">
+                        <i class="fa-regular fa-thumbs-up"></i><%= article.article_likes %>
+                    </button>
+                </form>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1><%= article.article_title %></h1>
+                        <span class="subheading"><%=article.article_subtitle%></span>
+                        <span class="subheading">Posted on <%= article.article_publication_date %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p><%= article.article_text %></p>
+                </div>
+            </div>
+            <!-- Comment Form -->
+            <div class="comment-form">
+                <form method="post" action="create-comments">
+                    <input style="display: none;" id="article_id" name="article_id" value="<%= article.article_id %>" />
+                    <label for="comment_text">Comment Text:</label>
+                    <textarea class="form-control" id="comment_text" name="comment_text" rows="3" placeholder="Share your comments here..." required></textarea>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+            <!-- Comments -->
+            <div class="container">
+                <div>
+                    <div class="text-center underline" style="font-size: x-large">Latest Comments</div>
+                    <% comments.forEach(function(comment){ %>
+                        <p><%= comment.comment_content %></p>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </article>
+    <br>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+    <title><%=settings.blogTitle%></title>
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/reader"><%=settings.blogTitle%></a>
+            <form action="/author" method="get">
+                <button class="author-button">Login as Author</button>
+            </form>
+        </div>
+    </nav>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1><%=settings.blogTitle%></h1>
+                        <span class="subheading"><%=settings.subTitle%></span>
+                        <span class="subheading">Created by: <%=settings.name%></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <% articles.forEach(function(article){ %>
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="/reader/read-article?id=<%= article.article_id %>">
+                            <h2 class="post-title"><%= article.article_title %></h2>
+                            <h3 class="post-subtitle"><%= article.article_subtitle %></h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted on 
+                            <%= article.article_publication_date %>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    <br>
+</body>
+
+</html>

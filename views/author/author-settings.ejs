@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+    <title>Author Blog Settings</title>
+</head>
+<body>
+    <div class="col d-flex justify-content-center">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/author">Back</a>
+                <form action="/reader" method="get">
+                    <button class="author-button">Login as Reader</button>
+                </form>
+            </div>
+        </nav>
+        <!-- Comment Form -->
+        <div class="container px-4 px-lg-5">
+            <header class="masthead">
+                <div class="site-heading">Update Settings</div>
+            </header>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <form action="update-settings" method="post" class="needs-validation">
+                        <div class="form-group">
+                            <label for="blog_title" class="form-label">Blog Title:</label>
+                            <textarea class="form-control" maxlength="100" type="text" id="blog_title" name="blog_title"
+                                placeholder="<%=blogTitle%>" required><%=blogTitle%></textarea>
+                            <div class="form-help">(1 - 100 characters)</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="blog_subtitle" class="form-label">Blog Subtitle:</label>
+                            <textarea class="form-control" maxlength="100" type="text" id="blog_subtitle" name="blog_subtitle"
+                                placeholder="<%=subTitle%>" required><%=subTitle%></textarea>
+                            <div class="form-help">(1 - 100 characters)</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="author_name" class="form-label">Author Name:</label>
+                            <input class="form-control" maxlength="50" type="text" id="author_name" name="author_name"
+                                placeholder="<%=name%>" value="<%=name%>" required />
+                            <div class="form-help">(1 - 50 characters)</div>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

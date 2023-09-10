@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+    <title><%=settings.blogTitle%> Author Page</title>
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/author"><%=settings.blogTitle%> (Author's Page)</a>
+            <form action="/reader" method="get">
+                <button class="author-button">Login as Reader</button>
+            </form>
+        </div>
+    </nav>
+    <!-- Page Header-->
+    <header class="masthead" style="background-color: grey">
+        <div class="container position-relative px-4 px-lg-5">
+            <div style="float:right">
+                <form action="/author/settings" method="get">
+                    <button type="submit" class="btn btn-outline-success">Settings</button>
+                </form>
+                <br/>
+                <form action="/author/create-new-draft" method="post">
+                    <button type="submit" class="btn btn-outline-success">Create Draft</button>
+                </form>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1><%=settings.blogTitle%></h1>
+                        <span class="subheading"><%=settings.subTitle%></span>
+                        <span class="subheading">Created by: <%=settings.name%></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h2>Draft Articles</h2>
+                <br/><br/>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <% draft_articles.forEach(function(article){ %>
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <h4 class="post-title"><%= article.article_title %></h4>
+                            <h5 class="post-subtitle"><%= article.article_subtitle %></h5>
+                        <p class="post-meta">
+                            <li class="list-group-item">
+                                <div class="text-muted">Last modified on: <%= article.article_last_modified_date %></div>
+                                <div class="text-muted">Created on: <%= article.article_create_date %></div>
+                            </li>
+                        </p>
+                        <div>
+                            <a href="/author/edit-article?id=<%= article.article_id %>" style="padding:10px;">Edit Article</a>
+                            <a href="/author/publish-article?id=<%= article.article_id %>" style="padding:10px;">Publish Article</a>
+                            <a href="/author/delete-article?id=<%= article.article_id %>" style="padding:10px;">Delete Article</a>
+                        </div>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                <% }) %>
+                <h2>Published Articles</h2>
+                <br/><br/>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <% published_articles.forEach(function(article){ %>
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <h4 class="post-title"><%= article.article_title %></h4>
+                            <h5 class="post-subtitle"><%= article.article_subtitle %></h5>
+                        <p class="post-meta">
+                            <li class="list-group-item">
+                                <div class="text-muted">Last modified on: <%= article.article_last_modified_date %></div>
+                                <div class="text-muted">Created on: <%= article.article_create_date %></div>
+                                <div class="text-muted">Published on: <%= article.article_publication_date %></div>
+                                <div class="text-muted">Number of likes <%= article.article_likes %></div>
+                            </li>
+                        </p>
+                        <div>
+                            <a href="/author/delete-article?id=<%= article.article_id %>">Delete Article</a>
+                            <a href="/reader/read-article?id=<%= article.article_id %>">Sharing Link</a>
+                        </div>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    <br>
+</body>
+</html>
