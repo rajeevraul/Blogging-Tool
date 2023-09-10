@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 # Blogging-Tool
 A RESTful application made with the express.js framework with a SQLite3 database
 =======
-##  Coursework Template ##
-### CM2040 Database Networks and the Web ###
-
 #### Installation requirements ####
 
 * NodeJS 
